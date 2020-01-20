@@ -9,7 +9,7 @@ data "archive_file" "source" {
 }
 
 module "enforce_no_public_ami" {
-  source           = "../../modules/cwe_lambda"
+  source           = "github.com/cloudmitigator/reflex/modules/cwe_lambda"
   rule_name        = "EnforceNoPublicAMI"
   rule_description = "Rule to check if AMI is modified to be public"
 
