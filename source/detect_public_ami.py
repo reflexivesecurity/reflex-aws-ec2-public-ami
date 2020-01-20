@@ -4,7 +4,7 @@ import json
 
 import boto3
 
-from aws_rule import AWSRule
+from reflex_core import AWSRule
 
 
 class PublicAMIRule(AWSRule):
