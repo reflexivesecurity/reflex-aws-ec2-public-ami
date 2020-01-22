@@ -6,6 +6,16 @@ data "archive_file" "source" {
   type        = "zip"
   source_dir  = "${path.module}/source"
   output_path = "${path.module}/source.zip"
+
+  depends_on = [
+    null_resource.pip_install,
+  ]
+}
+
+resource "null_resource" "pip_install" {
+  provisioner "local-exec" {
+    command = "pip install -r ${path.module}/source/requirements.txt -t ${path.module}/source/"
+  }
 }
 
 module "enforce_no_public_ami" {
