@@ -30,7 +30,7 @@ PATTERN
   source_code_dir          = "${path.module}/source"
   handler                  = "enforce_no_public_ami.lambda_handler"
   lambda_runtime           = "python3.7"
-  environment_variable_map = { SNS_TOPIC = "EnforceNoPublicAMI" }
+  environment_variable_map = { SNS_TOPIC = module.enforce_no_public_ami.sns_topic_arn }
   custom_lambda_policy     = <<EOF
 {
   "Version": "2012-10-17",
