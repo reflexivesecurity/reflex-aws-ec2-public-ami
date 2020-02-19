@@ -10,7 +10,7 @@ providers:
   - aws
 
 measures:
-  - aws-enforce-no-public-ami:
+  - reflex-aws-enforce-no-public-ami:
       email: "example@example.com"
 ```
 
@@ -18,7 +18,7 @@ or add it directly to your Terraform:
 ```
 ...
 
-module "enforce-s3-encryption" {
+module "enforce-no-public-ami" {
   source           = "github.com/cloudmitigator/reflex-aws-enforce-no-public-ami"
   email            = "example@example.com"
 }
