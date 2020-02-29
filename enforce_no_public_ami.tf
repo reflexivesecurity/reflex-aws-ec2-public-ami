@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "enforce_no_public_ami" {
-  source           = "git@github.com:cloudmitigator/reflex.git//modules/cwe_lambda?ref=v0.0.1"
+  source           = "git@github.com:cloudmitigator/reflex.git//modules/cwe_lambda?ref=v0.2.0"
   rule_name        = "EnforceNoPublicAMI"
   rule_description = "Rule to check if AMI is modified to be public"
 
@@ -30,7 +30,7 @@ PATTERN
   source_code_dir          = "${path.module}/source"
   handler                  = "enforce_no_public_ami.lambda_handler"
   lambda_runtime           = "python3.7"
-  environment_variable_map = { SNS_TOPIC = module.enforce_no_public_ami.sns_topic_arn }
+  environment_variable_map = { SNS_TOPIC = var.sns_topic_arn }
   custom_lambda_policy     = <<EOF
 {
   "Version": "2012-10-17",
@@ -53,6 +53,5 @@ EOF
 
   target_id = "EnforceNoPublicAMI"
 
-  topic_name = "EnforceNoPublicAMI"
-  email      = var.email
+  sns_topic_arn = var.sns_topic_arn
 }
