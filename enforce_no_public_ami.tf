@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "enforce_no_public_ami" {
-  source           = "git@github.com:cloudmitigator/reflex.git//modules/cwe_lambda?ref=sqs_queue_encryption"
+  source           = "git@github.com:cloudmitigator/reflex.git//modules/cwe_lambda?ref=v0.3.0"
   rule_name        = "EnforceNoPublicAMI"
   rule_description = "Rule to check if AMI is modified to be public"
 
