@@ -49,6 +49,5 @@ class PublicAMIRule(AWSRule):
 
 def lambda_handler(event, _):
     """ Handles the incoming event """
-    print(event)
     rule = PublicAMIRule(json.loads(event["Records"][0]["body"]))
     rule.run_compliance_rule()
