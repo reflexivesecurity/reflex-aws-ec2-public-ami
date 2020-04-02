@@ -1,7 +1,7 @@
 # reflex-aws-enforce-no-public-ami
 A Reflex rule for enforcing that all AWS EC2 AMI's be kept private.
 
-To learn more about EC2 AMI's, see [the AWS Documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html).
+To learn more about EC2 AMIs, see [the AWS Documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html).
 
 ## Getting Started
 To get started using Reflex, check out [the Reflex Documentation](https://docs.cloudmitigator.com/).
