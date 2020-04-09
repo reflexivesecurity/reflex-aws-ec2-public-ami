@@ -44,7 +44,11 @@ class PublicAMIRule(AWSRule):
 
     def get_remediation_message(self):
         """ Returns a message about the remediation action that occurred """
-        return f"The AMI with ID: {self.ami_image_id} was made public. Public access has been disabled."
+        message = f"The AMI with ID: {self.ami_image_id} was made public. "
+        if self.should_remediate():
+            message += "Public access has been disabled."
+
+        return message
 
 
 def lambda_handler(event, _):
