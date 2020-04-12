@@ -2,9 +2,9 @@ provider "aws" {
   region = "us-east-1"
 }
 
-module "enforce_no_public_ami" {
+module "ec2_public_ami" {
   source           = "git::https://github.com/cloudmitigator/reflex-engine.git//modules/cwe_lambda?ref=v0.5.7"
-  rule_name        = "EnforceNoPublicAMI"
+  rule_name        = "Ec2PublicAmi"
   rule_description = "Rule to check if AMI is modified to be public"
 
   event_pattern = <<PATTERN
@@ -26,9 +26,9 @@ module "enforce_no_public_ami" {
 }
 PATTERN
 
-  function_name            = "EnforceNoPublicAMI"
+  function_name            = "Ec2PublicAmi"
   source_code_dir          = "${path.module}/source"
-  handler                  = "enforce_no_public_ami.lambda_handler"
+  handler                  = "ec2_public_ami.lambda_handler"
   lambda_runtime           = "python3.7"
   environment_variable_map = { SNS_TOPIC = var.sns_topic_arn }
   custom_lambda_policy     = <<EOF
@@ -48,10 +48,10 @@ PATTERN
 EOF
 
 
-  queue_name    = "EnforceNoPublicAMI"
+  queue_name    = "Ec2PublicAmi"
   delay_seconds = 0
 
-  target_id = "EnforceNoPublicAMI"
+  target_id = "Ec2PublicAmi"
 
   sns_topic_arn = var.sns_topic_arn
   sqs_kms_key_id = var.reflex_kms_key_id
