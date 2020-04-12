@@ -1,4 +1,4 @@
-""" Module for PublicAMIRule """
+""" Module for Ec2PublicAmi """
 
 import json
 
@@ -7,7 +7,7 @@ import boto3
 from reflex_core import AWSRule
 
 
-class PublicAMIRule(AWSRule):
+class Ec2PublicAmi(AWSRule):
     """ AWS rule for ensuring non-public AMIs """
 
     client = boto3.client("ec2")
@@ -53,5 +53,5 @@ class PublicAMIRule(AWSRule):
 
 def lambda_handler(event, _):
     """ Handles the incoming event """
-    rule = PublicAMIRule(json.loads(event["Records"][0]["body"]))
+    rule = Ec2PublicAmi(json.loads(event["Records"][0]["body"]))
     rule.run_compliance_rule()
