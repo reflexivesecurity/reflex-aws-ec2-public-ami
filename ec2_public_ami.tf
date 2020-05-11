@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "ec2_public_ami" {
-  source           = "git::https://github.com/cloudmitigator/reflex-engine.git//modules/cwe_lambda?ref=v0.5.7"
+  source           = "git::https://github.com/cloudmitigator/reflex-engine.git//modules/cwe_lambda?ref=v0.6.0"
   rule_name        = "Ec2PublicAmi"
   rule_description = "Rule to check if AMI is modified to be public"
 
