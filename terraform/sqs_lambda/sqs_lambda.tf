@@ -1,5 +1,5 @@
 module "sqs_lambda" {
-  source = "git::https://github.com/cloudmitigator/reflex-engine.git//modules/sqs_lambda?ref=v2.0.1"
+  source = "git::https://github.com/reflexivesecurity/reflex-engine.git//modules/sqs_lambda?ref=v2.1.0"
 
   cloudwatch_event_rule_id  = var.cloudwatch_event_rule_id
   cloudwatch_event_rule_arn = var.cloudwatch_event_rule_arn
@@ -7,11 +7,11 @@ module "sqs_lambda" {
   package_location          = var.package_location
   handler                   = "ec2_public_ami.lambda_handler"
   lambda_runtime            = "python3.7"
-  environment_variable_map  = {
+  environment_variable_map = {
     SNS_TOPIC = var.sns_topic_arn,
     MODE      = var.mode
   }
-  custom_lambda_policy      = <<EOF
+  custom_lambda_policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
